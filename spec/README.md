@@ -1,0 +1,3 @@
+# spec
+
+These files are the law every agent-written note has to follow. [note-spec.md](note-spec.md) is the one-page rule set (four rules and an example), [fields.md](fields.md) defines the six front-matter fields, their closed value sets and the three criteria a note must pass before it can move from `unsettled` to `settled`, and [distill-failures.md](distill-failures.md) is the append-only log where `/kb-distill` records sources it could not turn into a note. The three skills in `.claude/skills/` load these files before writing, and `python -m kb doctor` checks every note in `notes/` against them.

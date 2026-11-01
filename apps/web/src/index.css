@@ -1,0 +1,267 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+  EDITORIAL THEME over shadcn (radix-nova base, Radix UI + Lucide).
+
+  Foundations are owned law from design/design-system.html and theme the
+  library; nothing here invents a value the sheet does not carry:
+    - near-black ink primary (the "slightly lighter black" main colour)
+    - one warm gray ramp, hairline rules rather than card shadows
+    - exactly ONE meaning-hue (--destructive = --alarm = stopped)
+    - serif reading surface, sans chrome
+    - one radius (3px) plus the pill
+  Light ships. Dark tokens exist; no toggle in v0.
+*/
+
+:root {
+  /* surfaces */
+  --background: #fdfdfc;          /* --paper */
+  --foreground: #1c1b19;          /* --ink / gray-1000 */
+  --card: #ffffff;                /* --paper-raised */
+  --card-foreground: #1c1b19;
+  --popover: #ffffff;             /* --paper-raised */
+  --popover-foreground: #1c1b19;
+
+  /* ink primary */
+  --primary: #1c1b19;
+  --primary-foreground: #fdfdfc;  /* --ink-on */
+  --secondary: #e7e5e0;           /* gray-200 */
+  --secondary-foreground: #1c1b19;
+  --muted: #f0efec;               /* gray-100 */
+  --muted-foreground: #6b665d;    /* gray-700 */
+  --accent: #f0efec;              /* gray-100, hover/selection fill */
+  --accent-foreground: #1c1b19;
+
+  /* the ONE meaning-hue: stopped */
+  --destructive: #8f2d20;         /* --alarm */
+  --destructive-foreground: #fdfdfc;
+
+  /* rules, named by access requirement (literal, not var aliases) */
+  --border: #dcd9d3;              /* --rule, gray-300 hairline */
+  --input: #847e73;               /* --rule-control, gray-600 control boundary */
+  --ring: #1c1b19;                /* --ink focus ring */
+
+  /* chart stays single-hue: neutral ramp steps plus the one alarm */
+  --chart-1: #1c1b19;
+  --chart-2: #54504a;
+  --chart-3: #847e73;
+  --chart-4: #b3ada2;
+  --chart-5: #8f2d20;
+
+  --radius: 3px;
+
+  --sidebar: #f4f3f0;             /* --paper-sunken */
+  --sidebar-foreground: #3a3732;
+  --sidebar-primary: #1c1b19;
+  --sidebar-primary-foreground: #fdfdfc;
+  --sidebar-accent: #e7e5e0;
+  --sidebar-accent-foreground: #1c1b19;
+  --sidebar-border: #dcd9d3;
+  --sidebar-ring: #1c1b19;
+}
+
+.dark {
+  --background: #141311;
+  --foreground: #eae6dc;
+  --card: #1b1a17;
+  --card-foreground: #eae6dc;
+  --popover: #1b1a17;
+  --popover-foreground: #eae6dc;
+  --primary: #eae6dc;
+  --primary-foreground: #141311;
+  --secondary: #282622;
+  --secondary-foreground: #eae6dc;
+  --muted: #211f1c;
+  --muted-foreground: #948e81;
+  --accent: #211f1c;
+  --accent-foreground: #eae6dc;
+  --destructive: #e08c7c;
+  --destructive-foreground: #141311;
+  --border: #32302b;
+  --input: #7d776b;
+  --ring: #eae6dc;
+  --chart-1: #eae6dc;
+  --chart-2: #b0aa9c;
+  --chart-3: #7d776b;
+  --chart-4: #524e46;
+  --chart-5: #e08c7c;
+  --sidebar: #100f0e;
+  --sidebar-foreground: #cdc7ba;
+  --sidebar-primary: #eae6dc;
+  --sidebar-primary-foreground: #141311;
+  --sidebar-accent: #282622;
+  --sidebar-accent-foreground: #eae6dc;
+  --sidebar-border: #32302b;
+  --sidebar-ring: #eae6dc;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: 3px;
+  --radius-md: 3px;
+  --radius-lg: 3px;
+  --radius-xl: 3px;
+
+  /* editorial type: sans for chrome, serif for the reading surface */
+  --font-sans: "Source Sans 3 Variable", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+  --font-serif: "Newsreader Variable", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  --font-mono: "Source Code Pro Variable", "SF Mono", ui-monospace, "Noto Sans Mono SC", monospace;
+}
+
+@theme {
+  /* editorial type roles: size/line-height as tokens so components never
+     hand-set them (sheet section 04) */
+  --text-note-title: 1.625rem/1.3;
+  --text-note-h2: 1.1875rem/1.35;
+  --text-note-h3: 1rem/1.45;
+  --text-note-body: 1.0625rem/1.7;
+  --text-title: 1.25rem/1.3;
+  --text-section: 0.8125rem/1.4;
+  --text-body: 0.875rem/1.55;
+  --text-label: 0.8125rem/1.3;
+  --text-caption: 0.75rem/1.45;
+  --text-data: 0.8125rem/1.5;
+  /* the one looping animation: the live run dot, at the single pulse duration */
+  --animate-live-dot: live-dot 1600ms ease-in-out infinite;
+}
+
+@keyframes live-dot {
+  0%, 100% { opacity: 1 }
+  50% { opacity: 0.35 }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    /* Thin, quiet scrollbars inside the panes; stable gutter so content never
+       shifts sideways when a scrollbar appears. */
+    scrollbar-width: thin;
+    scrollbar-color: var(--muted-foreground) transparent;
+    scrollbar-gutter: stable;
+  }
+  /* The app shell owns the viewport; the document never scrolls. Each pane
+     scrolls its own body. This is the "fixed shell" law from the sheet. */
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    overflow: hidden;
+  }
+}
+
+/* Rendered note content. The reading surface is serif; chrome is sans; the
+   markdown renderer emits these elements and no others. This is content
+   styling, not a redrawn component. */
+@layer components {
+  .note {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--foreground);
+  }
+  .note h2 {
+    font-family: var(--font-serif);
+    font-size: 1.1875rem;
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 1.6em 0 0.5em;
+  }
+  .note h3 {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.45;
+    margin: 1.5em 0 0.5em;
+  }
+  .note p {
+    margin: 0 0 1em;
+  }
+  .note ul,
+  .note ol {
+    margin: 0 0 1em;
+    padding-left: 1.5em;
+  }
+  .note li {
+    margin: 0.25em 0;
+  }
+  .note blockquote {
+    border-left: 2px solid var(--foreground);
+    margin: 1.5em 0;
+    padding-left: 1.25em;
+  }
+  .note blockquote p {
+    margin: 0;
+  }
+  .note code {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+  }
+  .note pre {
+    background: var(--muted);
+    margin: 1em 0;
+    overflow-x: auto;
+    padding: 1em;
+  }
+  .note pre code {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+  }
+  .note hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 1.5em 0;
+  }
+  .note table {
+    border-collapse: collapse;
+    font-size: 0.9em;
+    margin: 1em 0;
+  }
+  .note th,
+  .note td {
+    border-bottom: 1px solid var(--border);
+    padding: 0.4em 0.8em;
+    text-align: left;
+  }
+  .note strong {
+    font-weight: 600;
+  }
+}

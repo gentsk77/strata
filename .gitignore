@@ -1,0 +1,24 @@
+node_modules/
+dist/
+build/
+.vite/
+*.local
+coverage/
+*.tsbuildinfo
+npm-debug.log*
+
+# app state written by the review service (review records, comment threads, run records)
+.bench-state/
+
+# kb ingest output: copies of watched source files and the ingest cursor
+inbox/
+.kb/
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# local environment overrides (BENCH_SERVICE_PORT, STRATA_ROOT, BENCH_PYTHON)
+.env
+.env.*
+!.env.example
